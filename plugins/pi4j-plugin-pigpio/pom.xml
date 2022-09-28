@@ -39,6 +39,22 @@
     <!-- STANDARD BUILD INSTRUCTIONS -->
     <build>
         <plugins>
+        	<!-- OSGi with bnd-maven-plugin-->
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+				<configuration>
+					<bnd><![CDATA[
+Export-Package:	com.pi4j.plugin.pigpio.*
+Provide-Capability: \
+	osgi.serviceloader;\
+    	osgi.serviceloader="com.pi4j.extension.Plugin";\
+    	register:="com.pi4j.plugin.pigpio.PiGpioPlugin"
+Require-Capability: osgi.extender; \
+	  filter:="(osgi.extender=osgi.serviceloader.registrar)"
+]]></bnd>
+				</configuration>
+			</plugin>
             <!-- OPTIONALLY DEPLOY THE FINAL JAR TO THE RASPBERRY PI -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

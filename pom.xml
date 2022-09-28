@@ -267,7 +267,7 @@
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
         <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
-        <maven-bundle-plugin.version>5.1.2</maven-bundle-plugin.version>
+        <bnd-maven-plugin.version>6.3.1</bnd-maven-plugin.version>
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <native-maven-plugin.version>1.0-alpha-9</native-maven-plugin.version>
@@ -561,12 +561,20 @@
                     <version>${maven-scm-plugin.version}</version>
                 </plugin>
 
-                <!-- OSGi BUNDLE -->
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>${maven-bundle-plugin.version}</version>
+                <!-- OSGify BUNDLE with BND -->
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-maven-plugin</artifactId>
+                    <version>${bnd-maven-plugin.version}</version>
                     <extensions>true</extensions>
+					<executions>
+						<execution>
+							<id>jar</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
                 </plugin>
 
                 <!-- USED TO GENERATE HEADER FILES FOR NATIVE LIBS -->

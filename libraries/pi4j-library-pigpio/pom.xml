@@ -57,6 +57,16 @@
 
         <!-- BUILD PLUGINS -->
         <plugins>
+        	<!-- OSGi with bnd-maven-plugin-->
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+				<configuration>
+					<bnd><![CDATA[
+Export-Package:	com.pi4j.library.pigpio.*
+]]></bnd>
+				</configuration>
+			</plugin>
 
             <!-- ENFORCE THAT THE NATIVE JNI SO FILES EXISTS TO BE INCLUDED IN FINAL JAR           -->
             <!-- (The "lippi4j-pigpio.so" JNI library is embedded as a resource in the JAR file.) -->
